@@ -1,0 +1,22 @@
+name: Build
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    container:
+      image: cypress/base:latest
+    steps:
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Install NPM modules
+        run: npm install
+      - name: Run Cypress
+        run: npx cypress run --component
+      - name: Versions
+        run: |
+          npx cypress --version
+          node --version
+          npm --version
