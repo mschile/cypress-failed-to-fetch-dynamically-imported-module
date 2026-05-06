@@ -19,6 +19,8 @@ jobs:
       - name: Install NPM modules
         run: npm install
       - name: Run Cypress
+        env:
+          DEBUG: cypress:*
         run: npx cypress run --component
       - name: Versions
         run: |
